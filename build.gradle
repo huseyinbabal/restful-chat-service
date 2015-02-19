@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'restful-chat-service'
+    version = '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //jetty
+    compile('org.springframework.boot:spring-boot-starter-web:1.2.1.RELEASE') {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    compile('org.springframework.boot:spring-boot-starter-jetty:1.2.1.RELEASE')
+
+    // actuator
+    compile('org.springframework.boot:spring-boot-starter-actuator:1.2.1.RELEASE')
+
+    // mongodb
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb:1.2.1.RELEASE')
+
+    // hateoas
+    compile('org.springframework.hateoas:spring-hateoas:0.16.0.RELEASE')
+
+    // Test
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
