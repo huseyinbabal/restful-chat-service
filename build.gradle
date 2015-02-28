@@ -36,6 +36,10 @@ dependencies {
     // hateoas
     compile('org.springframework.hateoas:spring-hateoas:0.16.0.RELEASE')
 
+    // Gson
+    compile('com.google.code.gson:gson:2.3.1')
+
     // Test
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("com.jayway.restassured:rest-assured:2.4.0")
 }

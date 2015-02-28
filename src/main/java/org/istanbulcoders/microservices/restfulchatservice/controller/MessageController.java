@@ -3,15 +3,13 @@ package org.istanbulcoders.microservices.restfulchatservice.controller;
 
 import org.istanbulcoders.microservices.restfulchatservice.domain.Message;
 import org.istanbulcoders.microservices.restfulchatservice.repository.MessageRepository;
+import org.istanbulcoders.microservices.restfulchatservice.request.MessageRequest;
 import org.istanbulcoders.microservices.restfulchatservice.resource.MessageResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -29,13 +27,20 @@ public class MessageController {
         return new ResponseEntity<List<MessageResource>>(messages, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/{messageId}", method = RequestMethod.GET)
+    HttpEntity<MessageResource> get(@PathVariable("messageId") String messageId) {
+        Message message = messageRepository.findOne(messageId);
+        return new ResponseEntity<>(new MessageResource(message), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    HttpEntity<MessageResource> create(HttpServletRequest request,
-                                       @RequestParam("from") String from,
-                                       @RequestParam("to") String to,
-                                       @RequestParam("message") String message
-                                       ) {
-        Message savedMessage = messageRepository.save(new Message(from, to, message));
+    HttpEntity<MessageResource> create(@RequestBody MessageRequest messageRequest) {
+        Message savedMessage = messageRepository.save(new Message(
+                messageRequest.getFrom(),
+                messageRequest.getTo(),
+                messageRequest.getMessage()
+            )
+        );
         return new ResponseEntity<>(new MessageResource(savedMessage), HttpStatus.OK);
     }
 }

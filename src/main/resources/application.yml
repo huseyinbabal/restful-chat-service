@@ -4,5 +4,16 @@ spring:
     mongodb:
       host: localhost
       port: 27017
+      database: chatapp
 server:
   port: 9091
+
+---
+
+spring:
+  profiles.active: test
+  data:
+      mongodb:
+        host: localhost
+        port: 27017
+        database: chatapptest
