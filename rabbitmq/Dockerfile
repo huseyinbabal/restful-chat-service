@@ -6,10 +6,12 @@ RUN apt-key add rabbitmq-signing-key-public.asc
 RUN echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.list.d/rabbitmq.list
 RUN apt-get update
 RUN apt-get -y -q install rabbitmq-server
+RUN /usr/sbin/rabbitmq-plugins enable rabbitmq_management
 
 ENV RABBITMQ_LOG_BASE /var/log/rabbitmq
 ENV RABBITMQ_MNESIA_BASE /data/mnesia
-ENV RABBITMQ_PASS="pass"
+
+echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config
 
 RUN mkdir -p /var/log/supervisor
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
