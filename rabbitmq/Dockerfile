@@ -7,7 +7,7 @@ RUN echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.l
 RUN apt-get update
 RUN apt-get -y -q install rabbitmq-server
 RUN /usr/sbin/rabbitmq-plugins enable rabbitmq_management
-echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config
+RUN echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config
 
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
