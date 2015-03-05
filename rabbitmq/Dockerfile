@@ -6,6 +6,7 @@ RUN cd /opt \
 		&& mv rabbitmq_server-3.4.4 rabbitmq
 ENV RABBITMQ_LOG_BASE /var/log/rabbitmq
 ENV RABBITMQ_MNESIA_BASE /data/mnesia
+ENV RABBITMQ_PASS="pass"
 
 RUN mkdir -p /var/log/supervisor
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
