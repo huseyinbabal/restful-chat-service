@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-RUN apt-get update -y && apt-get install -y wget
+RUN apt-get update -y && apt-get install -y wget build-essential
 RUN cd /opt \
 		&& wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.4.4/rabbitmq-server-generic-unix-3.4.4.tar.gz \
 		&& tar -xvzf rabbitmq-server-generic-unix-3.4.4.tar.gz \
