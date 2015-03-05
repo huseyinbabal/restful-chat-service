@@ -8,6 +8,6 @@ ENV RABBITMQ_LOG_BASE /var/log/rabbitmq
 ENV RABBITMQ_MNESIA_BASE /data/mnesia
 
 WORKDIR /opt/rabbitmq/bin
-CMD["rabbitmq-server"]
+CMD ["rabbitmq-server"]
 EXPOSE 5672
 EXPOSE 15672
