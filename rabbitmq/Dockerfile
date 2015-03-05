@@ -14,6 +14,3 @@ EXPOSE 5672
 EXPOSE 15672
 
 CMD ["/usr/bin/supervisord"]
-
-WORKDIR /opt/rabbitmq/sbin
-CMD ["rabbitmq-plugins enable rabbitmq_management", "rabbitmq-server"]
