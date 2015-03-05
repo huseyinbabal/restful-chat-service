@@ -1,9 +1,12 @@
 FROM ubuntu:14.04
 RUN apt-get update -y && apt-get install -y wget build-essential supervisor
-RUN cd /opt \
-		&& wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.4.4/rabbitmq-server-generic-unix-3.4.4.tar.gz \
-		&& tar -xvzf rabbitmq-server-generic-unix-3.4.4.tar.gz \
-		&& mv rabbitmq_server-3.4.4 rabbitmq
+
+RUN wget http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+RUN apt-key add rabbitmq-signing-key-public.asc
+RUN echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.list.d/rabbitmq.list
+RUN apt-get update
+RUN apt-get -y -q install rabbitmq-server
+
 ENV RABBITMQ_LOG_BASE /var/log/rabbitmq
 ENV RABBITMQ_MNESIA_BASE /data/mnesia
 ENV RABBITMQ_PASS="pass"
