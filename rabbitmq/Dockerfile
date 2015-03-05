@@ -7,16 +7,11 @@ RUN echo "deb http://www.rabbitmq.com/debian/ testing main" > /etc/apt/sources.l
 RUN apt-get update
 RUN apt-get -y -q install rabbitmq-server
 RUN /usr/sbin/rabbitmq-plugins enable rabbitmq_management
-
-ENV RABBITMQ_LOG_BASE /var/log/rabbitmq
-ENV RABBITMQ_MNESIA_BASE /data/mnesia
-
 echo "[{rabbit, [{loopback_users, []}]}]." > /etc/rabbitmq/rabbitmq.config
 
-RUN mkdir -p /var/log/supervisor
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
 EXPOSE 5672
 EXPOSE 15672
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-n"]
