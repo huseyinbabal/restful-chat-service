@@ -4,7 +4,7 @@ WORKDIR /opt
 RUN wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.8.tgz
 RUN tar -xvzf mongodb-linux-x86_64-2.6.8.tgz \
 RUN mv mongodb-linux-x86_64-2.6.8 mongodb
-
+WORKDIR /
 ADD mongodb.conf /opt/mongodb/mongodb.conf
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
