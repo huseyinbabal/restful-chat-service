@@ -8,6 +8,7 @@ import org.istanbulcoders.microservices.restfulchatservice.ChatApplication;
 import org.istanbulcoders.microservices.restfulchatservice.domain.Message;
 import org.istanbulcoders.microservices.restfulchatservice.repository.MessageRepository;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import static com.jayway.restassured.RestAssured.when;
 @SpringApplicationConfiguration(classes = ChatApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
+@Ignore
 public class MessageControllerTest {
 
     @Autowired
