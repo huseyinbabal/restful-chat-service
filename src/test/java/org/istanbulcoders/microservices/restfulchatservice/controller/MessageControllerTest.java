@@ -1,6 +1,5 @@
 package org.istanbulcoders.microservices.restfulchatservice.controller;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
@@ -18,10 +17,6 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.jayway.restassured.RestAssured.given;
 import static com.jayway.restassured.RestAssured.when;
