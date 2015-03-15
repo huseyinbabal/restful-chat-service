@@ -2,9 +2,12 @@ spring:
   profiles.active: default
   data:
     mongodb:
-      host: localhost
+      host: localhost:27017
       port: 27017
       database: chatapp
+  rabbitmq:
+    host:
+    port:
 server:
   port: 9091
 

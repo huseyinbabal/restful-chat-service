@@ -3,20 +3,30 @@ package org.istanbulcoders.microservices.restfulchatservice.domain;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 public class Message {
     @Id
     private String id;
     private String from;
     private String to;
     private String message;
+    private Date date;
 
     public Message() {
     }
-
     public Message(String from, String to, String message) {
         this.from = from;
         this.to = to;
         this.message = message;
+        this.date = new Date();
+    }
+
+    public Message(String from, String to, String message, Date date) {
+        this.from = from;
+        this.to = to;
+        this.message = message;
+        this.date = date;
     }
 
     public String getId() {
@@ -51,6 +61,14 @@ public class Message {
         this.message = message;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Message{" +
@@ -58,6 +76,7 @@ public class Message {
                 ", from='" + from + '\'' +
                 ", to='" + to + '\'' +
                 ", message='" + message + '\'' +
+                ", date=" + date +
                 '}';
     }
 }

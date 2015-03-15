@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.2.RELEASE")
     }
 }
 
@@ -22,16 +22,16 @@ repositories {
 
 dependencies {
     //jetty
-    compile('org.springframework.boot:spring-boot-starter-web:1.2.1.RELEASE') {
+    compile('org.springframework.boot:spring-boot-starter-web:1.2.2.RELEASE') {
         exclude module: 'spring-boot-starter-tomcat'
     }
-    compile('org.springframework.boot:spring-boot-starter-jetty:1.2.1.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-jetty:1.2.2.RELEASE')
 
     // actuator
-    compile('org.springframework.boot:spring-boot-starter-actuator:1.2.1.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-actuator:1.2.2.RELEASE')
 
     // mongodb
-    compile('org.springframework.boot:spring-boot-starter-data-mongodb:1.2.1.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb:1.2.2.RELEASE')
 
     // hateoas
     compile('org.springframework.hateoas:spring-hateoas:0.16.0.RELEASE')
@@ -39,7 +39,14 @@ dependencies {
     // Gson
     compile('com.google.code.gson:gson:2.3.1')
 
+    // RabbitMQ
+    compile('org.springframework.boot:spring-boot-starter-amqp:1.2.2.RELEASE')
+
     // Test
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("com.jayway.restassured:rest-assured:2.4.0")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
 }
