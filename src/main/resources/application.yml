@@ -7,7 +7,7 @@ spring:
       database: chatapp
   rabbitmq:
     host:
-    port:
+    port: 0
 server:
   port: 9091
 
