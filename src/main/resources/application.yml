@@ -14,9 +14,14 @@ server:
 ---
 
 spring:
-  profiles.active: test
+  profiles.active: default
   data:
-      mongodb:
-        host: localhost
-        port: 27017
-        database: chatapptest
+    mongodb:
+      host: mongo.service.consul
+      port: 27017
+      database: chatapp
+  rabbitmq:
+    host: mongo.service.consul
+    port: 5672
+server:
+  port: 9091
