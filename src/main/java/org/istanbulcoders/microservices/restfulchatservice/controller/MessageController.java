@@ -38,12 +38,6 @@ public class MessageController {
         return new ResponseEntity<List<MessageResource>>(messages, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{messageId}", method = RequestMethod.GET)
-    HttpEntity<MessageResource> get(@PathVariable("messageId") String messageId) {
-        Message message = messageRepository.findOne(messageId);
-        return new ResponseEntity<>(new MessageResource(message), HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/", method = RequestMethod.POST)
     HttpEntity<MessageResource> create(@RequestBody MessageRequest messageRequest) {
         Message savedMessage = messageRepository.save(new Message(
