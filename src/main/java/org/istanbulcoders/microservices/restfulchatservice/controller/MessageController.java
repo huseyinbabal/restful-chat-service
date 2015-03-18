@@ -26,6 +26,11 @@ public class MessageController {
     @Autowired
     private RabbitMQ rabbitMQ;
 
+    @RequestMapping(value = "/*", method = RequestMethod.GET)
+    HttpEntity<Object> index() {
+        return new ResponseEntity<Object>("ok", HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/{to}", method = RequestMethod.GET)
     HttpEntity<List<MessageResource>> list(@PathVariable("to") String to) {
         List messages;
