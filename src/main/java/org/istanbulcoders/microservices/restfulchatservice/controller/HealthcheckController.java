@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HealthcheckController {
-    @RequestMapping(value = "/*", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     HttpEntity<Object> index() {
         return new ResponseEntity<Object>("ok", HttpStatus.OK);
     }
