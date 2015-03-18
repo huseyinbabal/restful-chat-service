@@ -1,12 +1,12 @@
 spring:
-  profiles.active: default
+  profiles: default
   data:
     mongodb:
       host: mongo.service.consul
       port: 27017
       database: chatapp
   rabbitmq:
-    host: mongo.service.consul
+    host: rabbit.service.consul
     port: 5672
 server:
   port: 9091
@@ -14,14 +14,14 @@ server:
 ---
 
 spring:
-  profiles.active: default
+  profiles: test
   data:
     mongodb:
       host: mongo.service.consul
       port: 27017
       database: chatapp
   rabbitmq:
-    host: mongo.service.consul
+    host: rabbit.service.consul
     port: 5672
 server:
   port: 9091
