@@ -9,7 +9,7 @@ spring:
     host: rabbit.service.consul
     port: 5672
 server:
-  port: 9091
+  port: ${SPRING_PORT}
 
 ---
 
@@ -24,4 +24,4 @@ spring:
     host: rabbit.service.consul
     port: 5672
 server:
-  port: 9091
+  port: ${SPRING_PORT}
