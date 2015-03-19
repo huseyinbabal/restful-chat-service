@@ -2,16 +2,17 @@ spring:
   profiles: default
   data:
     mongodb:
-      host: mongo.service.consul
+      host: localhost
       port: 27017
       database: chatapp
   rabbitmq:
-    host: rabbit.service.consul
+    host:
     port: 5672
 server:
   port: 9091
 logging:
-  level: DEBUG
+  level:
+    ROOT: DEBUG
 
 ---
 
